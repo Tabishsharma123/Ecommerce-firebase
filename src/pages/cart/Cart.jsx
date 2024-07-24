@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/jsx-key */
 import React, { useContext, useEffect, useState } from "react";
 import myContext from "../../context/data/myContext";
@@ -79,8 +80,8 @@ function Cart() {
     };
 
     var options = {
-      key: "rzp_test_bBGuD8ZtXyurPg",
-      key_secret: "Joesegs8weW9sTMBsqLJcoUF",
+      key: import.meta.env.VITE_RAZORPAY_KEY,
+      key_secret: import.meta.env.VITE_RAZORPAY_SECRET_KEY,
       amount: parseInt(grandTotal * 100),
       currency: "INR",
       order_receipt: "order_rcptid_" + name,
@@ -117,7 +118,6 @@ function Cart() {
         color: "#3399cc",
       },
     };
-
     var pay = new window.Razorpay(options);
     pay.open();
     console.log(pay);
